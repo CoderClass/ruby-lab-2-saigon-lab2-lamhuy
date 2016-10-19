@@ -13,6 +13,8 @@ class UsersController < ApplicationController
 	  if @user.save
 	    flash[:success] = "Account created!"
 	    session[:user_id] = @user.id
+
+      # @users = User.all
 	    redirect_to users_path # create user, let user in and redirect to /users
 	  else
 	    flash[:error] = "Error: #{@user.errors.full_messages.to_sentence}"
@@ -21,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-  	params.permit(:user).require(:name, :email, :password, :password_confirmation)
+  	params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
 end

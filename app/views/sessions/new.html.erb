@@ -1,0 +1,5 @@
+<%= form_tag '/login', method: 'post' do %>
+    <%= text_field_tag :email %>
+    <%= password_field_tag :password %>
+    <%= submit_tag 'Sign In', class: 'btn btn-secondary' %>
+<% end %>
